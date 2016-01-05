@@ -22,6 +22,10 @@ class Board {
         this.fallTime = 500;
     }
 
+    get area () {
+        return this.width * this.height;
+    }
+
     rotate () {
         this.currentBlock.rotate();
 

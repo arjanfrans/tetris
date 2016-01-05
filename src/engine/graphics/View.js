@@ -23,6 +23,14 @@ class View {
         return this.mesh.position;
     }
 
+    set visible (visible) {
+        this.mesh.visible = visible;
+    }
+
+    get visible () {
+        return this.mesh.visible;
+    }
+
     set position ({ x, y, z }) {
         if (this.mesh && this.initialized) {
             if (x) {

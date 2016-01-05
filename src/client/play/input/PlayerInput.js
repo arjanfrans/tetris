@@ -1,29 +1,28 @@
 import Keyboard from '../../../engine/input/Keyboard';
-import Gamepad from '../../../engine/input/Gamepad';
 import HumanInput from '../../../engine/input/HumanInput';
 
 class PlayerInput extends HumanInput {
-    constructor (player) {
+    constructor (state) {
         super();
 
-        this.player = player;
+        this.board = state.board;
     }
 
     update (delta) {
-        if (Keyboard.isDown(Keyboard.UP) || Gamepad.isStickDown(this.gamepadIndex, 'left', 'up')) {
-            // TODO
-        } else if (Keyboard.isDown(Keyboard.DOWN) || Gamepad.isStickDown(this.gamepadIndex, 'left', 'down')) {
-            // TODO
-        } else {
-            // TODO
+        if (this.keyboardDownOnce(Keyboard.UP)) {
+            this.board.rotate();
         }
 
-        if (Keyboard.isDown(Keyboard.RIGHT) || Gamepad.isStickDown(this.gamepadIndex, 'right', 'right')) {
-            // TODO
-        } else if (Keyboard.isDown(Keyboard.LEFT) || Gamepad.isStickDown(this.gamepadIndex, 'right', 'left')) {
-            // TODO
+        if (Keyboard.isDown(Keyboard.DOWN)) {
+            this.board.drop = true;
         } else {
-            // TODO
+            this.board.drop = false;
+        }
+
+        if (this.keyboardDownOnce(Keyboard.RIGHT)) {
+            this.board.moveRight();
+        } else if (this.keyboardDownOnce(Keyboard.LEFT)) {
+            this.board.moveLeft();
         }
     }
 }

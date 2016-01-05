@@ -56,6 +56,10 @@ class Renderer {
      * @returns {void}
      */
     render () {
+        if (!this._views) {
+            return;
+        }
+
         this._THREErenderer.clear();
 
         let info = {

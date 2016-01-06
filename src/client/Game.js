@@ -12,6 +12,7 @@ const ASSET_CONFIG = {
         audio: ASSET_PATH + '/audio/sprites'
     },
     textureAtlases: [
+        'play'
     ],
     fonts: [
         'keep_calm'

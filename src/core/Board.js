@@ -1,5 +1,5 @@
 import Shapes from './Shapes';
-import Block from './Block';
+import Brick from './Brick';
 
 class Board {
     constructor (width = 10, height = 22) {
@@ -56,15 +56,19 @@ class Board {
 
     randomBlock () {
         let shapeName = Shapes.names[Math.floor(Math.random() * Shapes.names.length)];
-        let shape = Shapes.shapes[shapeName][Math.floor(Math.random() * Shapes.shapes[shapeName].length)];
-        let rotation = Math.floor(Math.random() * 4);
+        let shape = Shapes.shapes[shapeName];
+        let rotation = Math.floor(Math.random() * shape[0].length);
 
         let shapeWidth = shape[rotation][0].length;
         let startX = Math.random() * (this.width - shapeWidth);
 
         console.log('creating new random block');
 
-        return new Block(shape, startX, 0, this);
+        let brick = new Brick(shape, startX, 0, this);
+
+        brick.rotation = rotation;
+
+        return brick;
     }
 
     completeLines () {

@@ -1,0 +1,17 @@
+{
+	"meta": {
+		"image": "play.png",
+		"size": {"w":64,"h":64},
+		"scale": "1"
+	},
+	"frames": [
+		{
+			"filename": "brick.png",
+			"frame": {"x":4,"y":4,"w":32,"h":32},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+			"sourceSize": {"w":32,"h":32}
+		}
+	]
+}

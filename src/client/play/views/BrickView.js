@@ -18,6 +18,8 @@ class BrickView extends View {
         });
 
         this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.mesh.position.x = 200;
+        this.mesh.position.y = 200;
 
         super.init();
     }

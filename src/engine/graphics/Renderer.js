@@ -57,6 +57,8 @@ class Renderer {
      */
     render () {
         if (!this._views) {
+            console.warn('no views');
+
             return;
         }
 

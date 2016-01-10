@@ -4,7 +4,7 @@ class BrickView extends View {
     constructor () {
         super();
 
-        this.color = 0x00ff00;
+        this.color = 0x000099;
     }
 
     init () {

@@ -11,8 +11,13 @@ class PlayRenderView extends RenderView {
     init () {
         super.init();
 
-        this.camera = new THREE.OrthographicCamera(0, this.width,
-            this.height, 0, -100, 1000);
+        this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 100, 1000);
+
+        this.camera.position.x = this.width / 2;
+        this.camera.position.y = this.height / 2;
+        this.camera.position.z = 600;
+
+        let ambientLight = new THREE.AmbientLight(0x030303);
     }
 
     update (delta) {

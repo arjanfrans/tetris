@@ -2,8 +2,8 @@ class Brick {
     constructor (shape, x, y, board) {
         this.board = board;
         this.shape = shape;
-        this.x = 0;
-        this.y = 0;
+        this.x = x;
+        this.y = y;
 
         this.offsetX = 0;
         this.offsetY = 0;
@@ -31,7 +31,7 @@ class Brick {
     }
 
     moveDown () {
-        this.offsetY = 1;
+        this.offsetY = -1;
     }
 
     rotate () {
@@ -63,18 +63,21 @@ class Brick {
     isValidMove () {
         for (let y = 0; y < this.shape[this.rotation].length; y++) {
             for (let x = 0; x < this.shape[this.rotation][y].length; x++) {
+                let nextX = this.x + x + this.offsetX;
+                let nextY = this.y + y + this.offsetY;
+
                 // Left and right wall
-                if (this.x + this.offsetX >= this.board.width - 2 || this.x + this.offsetX < 0) {
+                if (nextX >= this.board.width || nextX < 0) {
                     return false;
                 }
 
                 // Top and bottom wall
-                if (this.y + this.offsetY >= this.board.height - 2 || this.y + this.offsetY < 0) {
+                if (nextY < 0 || nextY >= this.board.height) {
                     return false;
                 }
 
                 // Other blocks
-                if (this.board.field[this.y + this.offsetY][this.x + this.offsetX]) {
+                if (this.board.field[nextY][nextX]) {
                     return false;
                 }
 
@@ -83,7 +86,7 @@ class Brick {
         }
     }
 
-    update () {
+    update (delta) {
         if (this.isValidMove()) {
             if (this.rotation + this.rotationOffset === 3) {
                 this.rotation = 0;

@@ -60,11 +60,11 @@ class Board {
         let rotation = Math.floor(Math.random() * shape[0].length);
 
         let shapeWidth = shape[rotation][0].length;
-        let startX = Math.random() * (this.width - shapeWidth);
+        let startX = Math.floor(Math.random() * (this.width - shapeWidth));
 
-        console.log('creating new random block');
+        console.log('creating new random block', startX);
 
-        let brick = new Brick(shape, startX, 0, this);
+        let brick = new Brick(shape, startX, this.height - 1, this);
 
         brick.rotation = rotation;
 
@@ -115,7 +115,7 @@ class Board {
         if (this.currentBlock.isOnFloor()) {
             this.currentBlock.freeze();
 
-            this.currentBlock = randomBlock();
+            this.currentBlock = this.randomBlock();
         }
     }
 }

@@ -16,12 +16,11 @@ class BorderView extends View {
 
         for (let y = 0; y < this.board.height; y++) {
             for (let x = 0; x < this.board.width; x++) {
-                console.log(x, y);
                 let createView = false;
 
-                if (x < 1 || x === this.board.width - 1) {
+                if (x === 0 || x === this.board.width - 1) {
                     createView = true;
-                } else if (y > 0 && y < 2 || y === this.board.height - 1) {
+                } else if (y === 0 || y === this.board.height - 1) {
                     createView = true;
                 }
 
@@ -31,12 +30,17 @@ class BorderView extends View {
                     brickView.init();
                     brickView.position.x = x * BRICK_WIDTH;
                     brickView.position.y = y * BRICK_HEIGHT;
-                    brickView.position.z = 50;
 
                     this.mesh.add(brickView.mesh);
                 }
             }
         }
+
+        let meshWidth = this.board.width * BRICK_WIDTH;
+        let meshHeight = this.board.height * BRICK_HEIGHT;
+
+        this.mesh.applyMatrix(new THREE.Matrix4().makeTranslation(meshWidth / 2, 0, 0));
+        this.mesh.translateX((this.board.width * BRICK_WIDTH) / 2);
 
         super.init();
     }

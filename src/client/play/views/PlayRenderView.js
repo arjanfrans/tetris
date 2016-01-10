@@ -12,9 +12,7 @@ class PlayRenderView extends RenderView {
         super.init();
 
         this.camera = new THREE.OrthographicCamera(0, this.width,
-            this.height, 0, 1, 1000);
-
-        this.camera.rotation.z = 1 * Math.PI;
+            this.height, 0, -100, 1000);
     }
 
     update (delta) {
